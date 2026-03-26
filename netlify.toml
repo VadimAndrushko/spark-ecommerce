@@ -1,0 +1,21 @@
+[build]
+  command = "composer install --no-dev --optimize-autoloader && npm ci && npm run build && php artisan key:generate --force"
+  publish = "public"
+
+[build.environment]
+  PHP_VERSION = "8.4"
+
+[dev]
+  command = "php artisan serve"
+  port = 8000
+  publish = "public"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/api/index.php"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.php"
+  status = 200
