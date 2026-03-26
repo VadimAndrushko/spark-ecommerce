@@ -164,7 +164,59 @@ The application comes with sample data:
 
 ## 🚀 Deployment
 
-### Production Setup
+### Vercel Deployment (Recommended)
+
+1. **Install Vercel CLI**
+   ```bash
+   npm install -g vercel
+   ```
+
+2. **Deploy to Vercel**
+   ```bash
+   vercel --prod
+   ```
+
+3. **Configure Environment Variables in Vercel Dashboard**
+   - Go to your project in Vercel dashboard
+   - Navigate to Settings → Environment Variables
+   - Add the following variables:
+     ```
+     APP_NAME=Spark
+     APP_ENV=production
+     APP_KEY=your-generated-app-key
+     APP_DEBUG=false
+     APP_URL=https://your-vercel-app.vercel.app
+     DB_CONNECTION=sqlite
+     ```
+
+4. **Database Setup**
+   - For SQLite: Database will be created automatically
+   - For PostgreSQL: Use Vercel Postgres or external provider
+
+5. **Generate Application Key**
+   ```bash
+   php artisan key:generate
+   ```
+
+### Alternative: Railway Deployment
+
+If you prefer Railway for better Laravel support:
+
+1. **Connect to Railway**
+   ```bash
+   railway login
+   railway link
+   ```
+
+2. **Deploy**
+   ```bash
+   railway up
+   ```
+
+### Traditional Hosting
+
+For traditional web hosting:
+
 1. Set up web server (Apache/Nginx)
 2. Configure database (MySQL/PostgreSQL)
 3. Set up SSL certificate
@@ -180,6 +232,9 @@ APP_KEY=your-app-key
 APP_DEBUG=false
 APP_URL=https://yourdomain.com
 
+# Database (SQLite for Vercel, MySQL/PostgreSQL for others)
+DB_CONNECTION=sqlite
+# or
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
