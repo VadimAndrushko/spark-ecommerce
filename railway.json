@@ -1,0 +1,31 @@
+{
+  "build": {
+    "builder": "NIXPACKS"
+  },
+  "deploy": {
+    "startCommand": "php artisan serve --host=0.0.0.0 --port=$PORT",
+    "healthcheckPath": "/",
+    "healthcheckTimeout": 300,
+    "restartPolicyType": "ON_FAILURE",
+    "restartPolicyMaxRetries": 10
+  },
+  "environments": [
+    {
+      "name": "production",
+      "envVars": [
+        {
+          "name": "APP_ENV",
+          "value": "production"
+        },
+        {
+          "name": "APP_DEBUG",
+          "value": "false"
+        },
+        {
+          "name": "DB_CONNECTION",
+          "value": "sqlite"
+        }
+      ]
+    }
+  ]
+}
